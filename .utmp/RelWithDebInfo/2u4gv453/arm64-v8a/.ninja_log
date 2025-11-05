@@ -1,0 +1,12 @@
+# ninja log v5
+1395	2183	7840363425389202	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	6cdc7173675f1700
+462	2243	7840363425984010	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	e228fca6f791809e
+301	2418	7840363426181625	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	4941ed60d3de09c5
+147	2421	7840363427112669	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	5308e5ab259e7754
+2185	2705	7840363430666475	C:/Users/CT_USER/Desktop/boat1/Boating/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2u4gv453/obj/arm64-v8a/libswappywrapper.so	44152e32fb7f52d8
+0	2827	7840363431871727	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	9996fc8e96187de7
+1009	2839	7840363432021940	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	b513126f16824d41
+641	2865	7840363432248294	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	aca29a6fe8fd90a8
+1193	2990	7840363433521623	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	50b6917b62339525
+816	2997	7840363433567232	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	9aa3350ae1cce3f6
+2998	3348	7840363437152660	C:/Users/CT_USER/Desktop/boat1/Boating/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2u4gv453/obj/arm64-v8a/libgame.so	3e42d5fbf95654d5

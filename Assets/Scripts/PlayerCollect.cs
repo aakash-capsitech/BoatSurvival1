@@ -5,6 +5,14 @@ public class PlayerCollect : MonoBehaviour
 {
     public TextMeshProUGUI coinText;
     public int coins = 0;
+
+    private PickUpSound pickUpSound;
+
+    private void Start()
+    {
+        pickUpSound = FindFirstObjectByType<PickUpSound>();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("coin"))
@@ -13,7 +21,7 @@ public class PlayerCollect : MonoBehaviour
             Debug.Log("Coin collected!");
             coins += 1;
             coinText.text = ""+coins;
-
+            pickUpSound.PlaySound();
         }
 
         if (other.CompareTag("fuel"))
@@ -23,6 +31,7 @@ public class PlayerCollect : MonoBehaviour
             FindFirstObjectByType<GameManager>().AddFuel();
             FindFirstObjectByType<GameManager>().AddFuel();
             FindFirstObjectByType<GameManager>().AddFuel();
+            pickUpSound.PlaySound();
         }
     }
 }

@@ -2,18 +2,24 @@ using UnityEngine;
 
 public class backgroundMove : MonoBehaviour
 {
-    private float speed = 1f;
+    private float speed;
     private Material mat;
     private float offset;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        speed = SpeedManager.currSpeed;
         mat = GetComponent<MeshRenderer>().material;
     }
 
-    // Update is called once per frame
+    public void SpeedHelper(float x)
+    {
+        speed = x;
+    }
+
     void Update()
     {
+        speed = SpeedManager.currSpeed;
+
         offset += (Time.deltaTime * speed) / 10f;
 
         mat.mainTextureOffset = new Vector2(0, offset);

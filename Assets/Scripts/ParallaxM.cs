@@ -4,7 +4,7 @@ public class ParallaxM : MonoBehaviour
 {
     public GameObject background1;
     public GameObject background2;
-    private float scrollSpeed = 1f;
+    private float scrollSpeed;
     public float backgroundHeight = 9.8f;
 
     private Rigidbody2D rb1;
@@ -12,10 +12,11 @@ public class ParallaxM : MonoBehaviour
 
     void Start()
     {
+        scrollSpeed = SpeedManager.currSpeed;
         SpeedHelper(scrollSpeed);
     }
 
-    void SpeedHelper(float x)
+    public void SpeedHelper(float x)
     {
         Debug.Log("jhf");
         rb1 = background1.GetComponent<Rigidbody2D>();
@@ -27,6 +28,9 @@ public class ParallaxM : MonoBehaviour
 
     void Update()
     {
+        scrollSpeed = SpeedManager.currSpeed;
+        SpeedHelper(scrollSpeed);
+
         if (background1.transform.position.y <= -backgroundHeight)
         {
             MoveToTop(background1, background2);
@@ -36,14 +40,7 @@ public class ParallaxM : MonoBehaviour
             MoveToTop(background2, background1);
         }
 
-        //float v = Input.GetAxis("Vertical");
-        //scrollSpeed += v * 2;
-
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            SpeedHelper(2f);
-        } 
-
+        //SpeedHelper(2f);
     }
 
     void MoveToTop(GameObject bgToMove, GameObject bgAbove)

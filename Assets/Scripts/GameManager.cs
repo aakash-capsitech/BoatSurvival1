@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] obstacles;
 
+    public TextMeshProUGUI muteText;
+
     void Start()
     {
         fuelArray = new GameObject[5];
@@ -146,4 +148,19 @@ public class GameManager : MonoBehaviour
             fuelCount++;
         }
     }
+
+    public void ToggleMute()
+    {
+        AudioListener.pause = !AudioListener.pause;
+        if(muteText.text == "Sound: ON")
+        {
+            muteText.text = "Sound: OFF";
+        }
+        else
+        {
+            muteText.text = "Sound: ON";
+        }
+            Debug.Log("Audio muted: " + AudioListener.pause);
+    }
+
 }

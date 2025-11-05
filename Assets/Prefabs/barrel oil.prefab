@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -557639974654816324}
   - component: {fileID: -3330145173929110571}
   - component: {fileID: 2675878295628898797}
-  - component: {fileID: 2175057526761866376}
   m_Layer: 0
   m_Name: barrel oil
   m_TagString: fuel
@@ -259,15 +258,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2175057526761866376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5573460972025627045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 136cab8e4d4507b4aaeeb2f9c0852568, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
