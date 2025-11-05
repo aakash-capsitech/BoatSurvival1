@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private GameObject[] fuelArray;
     private int fuelCount = 5;
 
-    private GameOverScript gameOverScript;
+    private GameOverS gameOverScript;
     public TextMeshProUGUI scoreText;
     public int score;
 
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(EmptyFuel());
         StartCoroutine(UpdateScore());
         StartCoroutine(SpawnObstacles());
-        gameOverScript = GetComponent<GameOverScript>();
+        gameOverScript = GetComponent<GameOverS>();
     }
 
     IEnumerator UpdateScore()
@@ -52,25 +52,36 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnObstacles()
     {
-        while(true)
+        float baseDelay = 2.5f;
+        float randomOffset = 0.4f;
+
+        while (true)
         {
-            yield return new WaitForSeconds(2);
-            int randIndex = Random.Range(0, 3);
-            int randPos = Random.Range(-1, 2);
-            Instantiate(obstacles[randIndex], new Vector3(randPos, 10, 0), Quaternion.identity);
+            yield return new WaitForSeconds(baseDelay + Random.Range(-randomOffset, randomOffset));
+
+            int randIndex = Random.Range(0, obstacles.Length);
+            float randX = Random.Range(-1.5f, 1.5f);
+
+            Instantiate(obstacles[randIndex], new Vector3(randX, 10f, 0f), Quaternion.identity);
         }
     }
 
     IEnumerator SpawnCoin()
     {
+        float baseDelay = 1.8f;
+        float randomOffset = 0.3f;
+
         while (true)
         {
-            yield return new WaitForSeconds(spawnInterval);
-            float x = Random.Range(minX, maxX);
-            Vector3 spawnPos = new Vector3(x, y, 0);
+            yield return new WaitForSeconds(baseDelay + Random.Range(-randomOffset, randomOffset));
+
+            float x = Random.Range(-1.3f, 1.3f);
+            Vector3 spawnPos = new Vector3(x, 10f, 0f);
+
             Instantiate(coinPrefab, spawnPos, Quaternion.identity);
         }
     }
+
 
     IEnumerator SpawnFuel()
     {

@@ -7,6 +7,8 @@ TagManager:
   - coin
   - d
   - fuel
+  - Land
+  - Obstacles
   layers:
   - Default
   - TransparentFX

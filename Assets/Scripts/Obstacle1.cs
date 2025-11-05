@@ -15,11 +15,16 @@ public class Obstacle1 : MonoBehaviour
     private Color baseColor;
     private float initialY;
 
+    //public GameManager gameManager;
+    private LifeManager lifeManager;
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         baseColor = sr.color;
         initialY = transform.position.y;
+
+        lifeManager = FindFirstObjectByType<LifeManager>();
     }
 
     void Update()
@@ -38,6 +43,17 @@ public class Obstacle1 : MonoBehaviour
         {
             float t = (Mathf.Sin(Time.time * glowSpeed) + 1f) / 2f;
             sr.color = baseColor * (1 + t * glowIntensity);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            //gameManager.GetComponent<GameOverS>().GameOver();
+            lifeManager.TakeDamage();
+            Destroy(gameObject);
+            //audioS.GetComponent<AudioSource>().Play();
         }
     }
 }
