@@ -108,6 +108,8 @@ public class PlayerMovement : MonoBehaviour
 
     private float currentZRotation = 180f;
 
+    [SerializeField] private float moveSpeed = 500f;
+
 
     private void Start()
     {
@@ -149,17 +151,31 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    //void RotatePlayerToMouseLeft()
+    //{
+    //    rbBoat.transform.position = new Vector3(rbBoat.transform.position.x - 0.33f, rbBoat.transform.position.y, 0f);
+    //}
+
+    //void RotatePlayerToMouse2()
+    //{
+    //    rbBoat.transform.position = new Vector3(rbBoat.transform.position.x + 0.33f, rbBoat.transform.position.y, 0f);
+    //}
+
+
+   
+
     void RotatePlayerToMouseLeft()
     {
-        //rbBoat.linearVelocity = transform.right * 1f;
-        rbBoat.transform.position = new Vector3(rbBoat.transform.position.x - 0.33f, rbBoat.transform.position.y, 0f);
+        Vector3 targetPos = new Vector3(rbBoat.transform.position.x - 0.33f, rbBoat.transform.position.y, 0f);
+        rbBoat.transform.position = Vector3.Lerp(rbBoat.transform.position, targetPos, moveSpeed);
     }
 
     void RotatePlayerToMouse2()
     {
-        //rbBoat.linearVelocity = -transform.right * 1f;
-        rbBoat.transform.position = new Vector3(rbBoat.transform.position.x + 0.33f, rbBoat.transform.position.y, 0f);
+        Vector3 targetPos = new Vector3(rbBoat.transform.position.x + 0.33f, rbBoat.transform.position.y, 0f);
+        rbBoat.transform.position = Vector3.Lerp(rbBoat.transform.position, targetPos, moveSpeed);
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

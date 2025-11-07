@@ -65,6 +65,11 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(baseDelay + Random.Range(-randomOffset, randomOffset));
+            if(baseDelay > 1.0f)
+            {
+                baseDelay -= 0.1f;
+            }
+            
 
             int randIndex = Random.Range(0, obstacles.Length);
             float randX = Random.Range(-1.5f, 1.5f);
