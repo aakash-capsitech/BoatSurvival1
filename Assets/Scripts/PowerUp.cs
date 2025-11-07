@@ -4,11 +4,11 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     [Header("Power-Up Settings")]
-    public float duration = 5f;          // How long the power-up lasts
-    public GameObject playerPowerEffect; // Assign the "PowerUp" prefab (orange circle under player)
+    public float duration = 5f;
+    public GameObject playerPowerEffect;
 
-    public static bool isActive { get; private set; } = false; // Global status check
-    public static PowerUp Instance;                           // Singleton reference
+    public static bool isActive { get; private set; } = false;
+    public static PowerUp Instance;
 
     private void Awake()
     {
@@ -19,13 +19,11 @@ public class PowerUp : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // Only activate if not already powered up
             if (!isActive)
             {
                 StartCoroutine(ActivatePowerUp(collision.transform));
             }
 
-            // Hide this power-up object once picked up
             gameObject.SetActive(false);
         }
     }
@@ -34,7 +32,6 @@ public class PowerUp : MonoBehaviour
     {
         isActive = true;
 
-        // Enable the orange circle visual (attach it under the player)
         if (playerPowerEffect != null)
         {
             playerPowerEffect.transform.SetParent(player);
@@ -44,7 +41,6 @@ public class PowerUp : MonoBehaviour
 
         Debug.Log("Power-up activated!");
 
-        // Wait for the power-up duration
         yield return new WaitForSeconds(duration);
 
         // Disable power-up

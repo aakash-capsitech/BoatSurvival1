@@ -1,7 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
-public class Obstacle1 : MonoBehaviour
+public class Power1 : MonoBehaviour
 {
     public float rotationSpeed = 200f;
     public bool useYRotation = true;
@@ -16,10 +15,6 @@ public class Obstacle1 : MonoBehaviour
     private Color baseColor;
     private float initialY;
 
-    //public GameManager gameManager;
-    private LifeManager lifeManager;
-
-    private ObstacleSound oSound;
     private DestructionManager destructionManager;
 
     void Start()
@@ -29,9 +24,6 @@ public class Obstacle1 : MonoBehaviour
         baseColor = sr.color;
         initialY = transform.position.y;
 
-        lifeManager = FindFirstObjectByType<LifeManager>();
-        oSound = FindFirstObjectByType<ObstacleSound>();
-
         destructionManager = FindFirstObjectByType<DestructionManager>();
         DestructionManager.trackedObjects.Add(gameObject);
     }
@@ -39,6 +31,11 @@ public class Obstacle1 : MonoBehaviour
     void Update()
     {
         fallSpeed = SpeedManager.currSpeed;
+        if (useYRotation)
+            transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        else
+            transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+
         float floatOffset = Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
         transform.position = new Vector3(
             transform.position.x,
@@ -58,24 +55,5 @@ public class Obstacle1 : MonoBehaviour
     public void SpeedHelper(float x)
     {
         fallSpeed = x;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.gameObject.CompareTag("player"))
-        {
-            Destroy(gameObject); ;
-        }
-        
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-            oSound.PlaySound();
-            if(PowerUpManager.isPower)
-            {
-                return;
-            }
-            lifeManager.TakeDamage();
-        }
     }
 }

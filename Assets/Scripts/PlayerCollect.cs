@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -5,6 +6,7 @@ public class PlayerCollect : MonoBehaviour
 {
     public TextMeshProUGUI coinText;
     public int coins = 0;
+    public GameObject surrounderPrefab;
 
     private PickUpSound pickUpSound;
 
@@ -33,5 +35,21 @@ public class PlayerCollect : MonoBehaviour
             FindFirstObjectByType<GameManager>().AddFuel();
             pickUpSound.PlaySound();
         }
+        if (other.CompareTag("power"))
+        {
+            Destroy(other.gameObject);
+            Debug.Log("Power collected!");
+            PowerUpManager.isPower = true;
+            pickUpSound.PlaySound();
+            StartCoroutine(PowerUpCollection());
+        }
+    }
+
+    IEnumerator PowerUpCollection()
+    {
+        GameObject powerG = Instantiate(surrounderPrefab, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(5);
+        Destroy(powerG);
+        PowerUpManager.isPower = false;
     }
 }

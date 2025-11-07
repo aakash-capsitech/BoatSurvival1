@@ -69,7 +69,6 @@ public class BoatWaveEffectPro : MonoBehaviour
     {
         while (true)
         {
-            // Randomize small offset around boat bottom
             float xOffset = Random.Range(-0.4f, 0.4f);
             Vector3 spawnPos = new Vector3(transform.position.x + xOffset, transform.position.y + threadOffsetY, 0);
 
@@ -97,17 +96,14 @@ public class BoatWaveEffectPro : MonoBehaviour
         Color c = sr.color;
         float elapsed = 0f;
 
-        // Random horizontal direction
         float dir = Random.value < 0.5f ? -1f : 1f;
 
         while (elapsed < threadLifetime)
         {
             elapsed += Time.deltaTime;
 
-            // Slight sideways drift
             thread.transform.position += new Vector3(dir * moveSpeed * Time.deltaTime, 0, 0);
 
-            // Fade out
             c.a -= threadFadeSpeed * Time.deltaTime;
             sr.color = c;
 

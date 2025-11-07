@@ -30,8 +30,13 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI muteText;
 
+    private HealthBar hb;
+
     void Start()
     {
+
+        hb = FindFirstObjectByType<HealthBar>();
+
         fuelArray = new GameObject[5];
         StartCoroutine(SpawnCoin());
         StartCoroutine(SpawnFuel());
@@ -107,7 +112,7 @@ public class GameManager : MonoBehaviour
                     0
                 );
 
-                fuelArray[i] = Instantiate(FuelPrefab, pos, Quaternion.identity);
+                //fuelArray[i] = Instantiate(FuelPrefab, pos, Quaternion.identity);
             }
         }
     }
@@ -123,6 +128,7 @@ public class GameManager : MonoBehaviour
                 fuelCount--;
                 Destroy(fuelArray[fuelCount]);
                 fuelArray[fuelCount] = null;
+                hb.TakeDamage(20);
             }
 
             if (fuelCount <= 0)
@@ -144,8 +150,9 @@ public class GameManager : MonoBehaviour
                 0
             );
 
-            fuelArray[fuelCount] = Instantiate(FuelPrefab, pos, Quaternion.identity);
+            //fuelArray[fuelCount] = Instantiate(FuelPrefab, pos, Quaternion.identity);
             fuelCount++;
+            hb.AddHealth(60);
         }
     }
 

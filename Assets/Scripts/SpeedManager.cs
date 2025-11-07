@@ -1,53 +1,3 @@
-//using System.Collections;
-//using UnityEngine;
-
-//public class SpeedManager : MonoBehaviour
-//{
-//    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-//    private ParallaxM para;
-//    private backgroundMove bM;
-//    private Obstacle1 obs;
-//    private Fuel1 fuel;
-//    private Coin1 coin;
-
-//    void Start()
-//    {
-//        para = FindFirstObjectByType<ParallaxM>();
-//        bM = FindFirstObjectByType<backgroundMove>();
-//        obs = FindFirstObjectByType<Obstacle1>();
-//        fuel = FindFirstObjectByType<Fuel1>();
-//        coin = FindFirstObjectByType<Coin1>();
-
-//        StartCoroutine(SpeedUp());
-//    }
-
-//    // Update is called once per frame
-//    void Update()
-//    {
-
-//    }
-
-//    IEnumerator SpeedUp()
-//    {
-//        float currSpeed = 2f;
-//        while(true)
-//        {
-//            yield return new WaitForSeconds(10);
-
-//            para.SpeedHelper(currSpeed);
-//            bM.SpeedHelper(currSpeed);
-//            obs.SpeedHelper(currSpeed);
-//            fuel.SpeedHelper(currSpeed);
-//            coin.SpeedHelper(currSpeed);
-
-//            currSpeed += 1;
-//        }
-//    }
-//}
-
-
-
 using System.Collections;
 using UnityEngine;
 
@@ -64,9 +14,9 @@ public class SpeedManager : MonoBehaviour
     {
         while (true)
         {
-            currSpeed += 1;
+            currSpeed += 0.1f;
 
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(1);
 
             foreach (var para in FindObjectsByType<ParallaxM>(FindObjectsSortMode.None))
                 para.SpeedHelper(currSpeed);

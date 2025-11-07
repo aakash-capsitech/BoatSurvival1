@@ -9,6 +9,7 @@ TagManager:
   - fuel
   - Land
   - Obstacles
+  - power
   layers:
   - Default
   - TransparentFX

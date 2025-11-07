@@ -193,6 +193,7 @@ MonoBehaviour:
   enableGlow: 1
   glowSpeed: 2
   glowIntensity: 0.3
+  starEffect: {fileID: 0}
 --- !u!82 &-5991116397042275234
 AudioSource:
   m_ObjectHideFlags: 0
